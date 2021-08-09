@@ -29,9 +29,9 @@ const inputsSchema = {
     otherwise: joi.string().allow(""),
   }),
   githubToken: joi.string().required(),
-  transition: joi.string().when("action", {
+  transition: joi.when("action", {
     is: joi.equal("transition"),
-    then: joi.valid("implement", "review", "closed"),
+    then: joi.string().pattern(/^(implement|review|closed|\|)+$/).required(),//valid("implement", "review", "closed"),
     otherwise: joi.allow(""),
   }),
   requestSysId: joi.string().when("action", {

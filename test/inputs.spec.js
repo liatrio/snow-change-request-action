@@ -169,16 +169,22 @@ describe("inputs", () => {
     it.each(["implement", "review", "closed"])(
       "should allow a transition to %s",
       (field) => {
-        inputs[field] = "";
+        inputs.transition = field;
 
         expect(getInputs).not.toThrow();
       }
     );
 
+    it('should allow multiple states', () => {
+      inputs.transition = 'implement|review|closed';
+
+      expect(getInputs).not.toThrow();
+    })
+
     it("should not allow an invalid transition", () => {
       inputs.transition = chance.word();
 
-      expect(getInputs).toThrow('"transition" must be one of');
+      expect(getInputs).toThrow('fails to match the required pattern');
     });
 
     it("should not allow an empty value", () => {
