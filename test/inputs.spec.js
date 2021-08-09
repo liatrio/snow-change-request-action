@@ -175,16 +175,16 @@ describe("inputs", () => {
       }
     );
 
-    it('should allow multiple states', () => {
-      inputs.transition = 'implement|review|closed';
+    it("should allow multiple states", () => {
+      inputs.transition = "implement|review|closed";
 
       expect(getInputs).not.toThrow();
-    })
+    });
 
     it("should not allow an invalid transition", () => {
       inputs.transition = chance.word();
 
-      expect(getInputs).toThrow('fails to match the required pattern');
+      expect(getInputs).toThrow("fails to match the required pattern");
     });
 
     it("should not allow an empty value", () => {

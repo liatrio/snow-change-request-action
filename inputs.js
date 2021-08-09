@@ -31,7 +31,10 @@ const inputsSchema = {
   githubToken: joi.string().required(),
   transition: joi.when("action", {
     is: joi.equal("transition"),
-    then: joi.string().pattern(/^(implement|review|closed|\|)+$/).required(),//valid("implement", "review", "closed"),
+    then: joi
+      .string()
+      .pattern(/^(implement|review|closed|\|)+$/)
+      .required(), //valid("implement", "review", "closed"),
     otherwise: joi.allow(""),
   }),
   requestSysId: joi.string().when("action", {
