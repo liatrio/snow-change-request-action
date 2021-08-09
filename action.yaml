@@ -1,0 +1,45 @@
+name: snow-change-request
+description: Create a change request in ServiceNow
+inputs:
+  action:
+    description: Create a change request, attach a file, or approve a change request
+    required: true
+    default: create # possible values: approve, attach-file, create, lookup-change-request, require-approval, transition
+  approvalAssignmentGroup:
+    description: "Name of the group that needs to approve the change request"
+    default: "CAB Approval"
+    required: false
+  attachmentFilePath:
+    description: Path to the file, including the file name
+    required: false
+  attachmentFileName:
+    description: Name the attachment should have in SerivceNow, does not need to match attachmentFilePath
+    required: false
+  attachmentFileContentType:
+    description: Content type of the file
+    default: "application/text"
+    required: false
+  changeRequestMessage:
+    description: Change request message
+    required: false
+  githubToken:
+    description: GitHub access token -- used to post and edit comments on pull requests
+    required: true
+  transition:
+    description: Name of the state to which to transition
+    required: false
+  requestSysId:
+    description: Sysid of the target request
+    required: false
+  serviceNowUrl:
+    description: Base URL of the ServiceNow instance
+    required: true
+  serviceNowUsername:
+    description: ServiceNow username
+    required: true
+  serviceNowPassword:
+    description: ServiceNow user password
+    required: true
+runs:
+  using: docker
+  image: Dockerfile

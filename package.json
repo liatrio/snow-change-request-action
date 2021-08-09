@@ -1,0 +1,45 @@
+{
+  "name": "snow-change-request-action",
+  "version": "0.0.1",
+  "description": "A GitHub Action for automating ServiceNow change requests.",
+  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fmt": "prettier --write .",
+    "lint": "eslint --max-warnings=0 .",
+    "test": "jest",
+    "verify": "prettier --check . && yarn lint && yarn test"
+  },
+  "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/github": "^5.0.0",
+    "dayjs": "^1.10.6",
+    "joi": "^17.4.2",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
+    "babel-jest": "^27.0.6",
+    "chance": "^1.1.7",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": ".jest/coverage",
+    "cacheDirectory": ".jest/cache",
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/.jest/**",
+      "!**test/**"
+    ],
+    "transform": {
+      "\\.js$": "babel-jest"
+    }
+  }
+}
