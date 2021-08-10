@@ -34,7 +34,7 @@ const inputsSchema = {
     then: joi
       .string()
       .pattern(/^(implement|review|closed|\|)+$/)
-      .required(), //valid("implement", "review", "closed"),
+      .required(),
     otherwise: joi.allow(""),
   }),
   requestSysId: joi.string().when("action", {
