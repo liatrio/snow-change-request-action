@@ -42,4 +42,4 @@ inputs:
     required: true
 runs:
   using: docker
-  image: ghcr.io/liatrio/snow-change-request-action:latest
+  image: docker://ghcr.io/liatrio/snow-change-request-action:latest
