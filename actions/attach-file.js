@@ -5,7 +5,7 @@ import * as fs from "fs/promises";
 export const attachFile = async ({ snow, inputs }) => {
   const fileName =
     inputs.attachmentFileName || path.basename(inputs.attachmentFilePath);
-  const rawFile = await fs.readFile(inputs.attachmentFilePath);
+  const rawFile = await fs.readFile(inputs.attachmentFilePath, 'utf8');
 
   core.info("Attaching file to change request");
   await snow.post({
