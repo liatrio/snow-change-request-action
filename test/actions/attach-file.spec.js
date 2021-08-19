@@ -27,6 +27,10 @@ describe("attach-file", () => {
   it("should make a POST request to attach the file", async () => {
     await attachFile({ snow: snowClient, inputs: expectedInputs });
 
+    expect(fs.readFile).toHaveBeenCalledWith(
+      expectedInputs.attachmentFilePath,
+      "utf8"
+    );
     expect(snowClient.post).toHaveBeenCalledTimes(1);
     expect(snowClient.post).toHaveBeenCalledWith({
       path: "/api/now/attachment/file",
